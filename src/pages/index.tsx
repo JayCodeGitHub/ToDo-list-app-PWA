@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Task from "@/components/task";
 import DarkModeToggle from "@/components/darkModeToggle";
+import Input from "@/components/input";
 
 export default function Home() {
   const [tasks, setTasks] = useState([
@@ -21,6 +22,7 @@ export default function Home() {
         <Task title={item} key={item} />
       ))}
       <DarkModeToggle>Dark Mode</DarkModeToggle>
+      <Input />
     </main>
   );
 }
