@@ -11,7 +11,7 @@ export default function TaskLabel({ isDone }: TaskProps) {
         className={`${
           isDone
             ? "text-gray-600 dark:text-gray-400"
-            : "text-black dark:text-white "
+            : "text-gray-900 dark:text-white "
         } relative ml-3`}
       >
         Task Label
