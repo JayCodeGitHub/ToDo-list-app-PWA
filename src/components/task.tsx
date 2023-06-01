@@ -5,11 +5,10 @@ import TaskLabel from "./taskLabel";
 export default function Task() {
   const [isDone, setIsDone] = useState<boolean>(false);
   return (
-    <span
-      onClick={() => setIsDone(!isDone)}
-      className="flex items-center px-4 py-4"
-    >
-      <CheckBox isDone={isDone} />
+    <span className="flex items-center px-4 py-4">
+      <span onClick={() => setIsDone(!isDone)}>
+        <CheckBox isDone={isDone} />
+      </span>
       <TaskLabel isDone={isDone} />
     </span>
   );
