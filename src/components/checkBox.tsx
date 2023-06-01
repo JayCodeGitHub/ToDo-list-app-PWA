@@ -9,7 +9,9 @@ export default function CheckBox({ isDone }: CheckBoxProps) {
     <motion.button
       animate={{ backgroundColor: isDone ? "#3b82f6" : "white" }}
       transition={{ duration: 0.1 }}
-      className="flex items-center justify-center w-6 h-6 transition-all rounded-md "
+      className={`flex items-center justify-center w-6 h-6 transition-all rounded-md ${
+        isDone ? "border-2 border-[#3b82f6]" : "border-2 border-gray-400"
+      } `}
     >
       <svg
         className="w-5 h-5 text-white"
