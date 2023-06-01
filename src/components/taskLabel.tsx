@@ -9,13 +9,13 @@ export default function TaskLabel({ isDone }: TaskProps) {
     <div>
       <motion.label
         className={`${
-          isDone ? "text-gray-700" : "text-black"
+          isDone ? "text-gray-600" : "text-black"
         } relative ml-3 delay-200`}
       >
         Task Label
         <motion.span
           className={` ${
-            isDone ? "bg-gray-700" : "bg-black"
+            isDone ? "bg-gray-600" : "bg-black"
           } absolute left-0 w-full h-0.5 translate-y-1/2 top-1/2`}
           initial={{ width: 0 }}
           animate={{ width: isDone ? "100%" : 0 }}
