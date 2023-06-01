@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
 
 interface TaskProps {
+  children: React.ReactNode;
   isDone: boolean;
 }
 
-export default function TaskLabel({ isDone }: TaskProps) {
+export default function TaskLabel({ children, isDone }: TaskProps) {
   return (
     <div>
       <motion.label
@@ -14,7 +15,7 @@ export default function TaskLabel({ isDone }: TaskProps) {
             : "text-gray-900 dark:text-white "
         } relative ml-3`}
       >
-        Task Label
+        {children}
         <motion.span
           className={` ${
             isDone ? "bg-gray-600 dark:bg-gray-400" : "bg-black"
