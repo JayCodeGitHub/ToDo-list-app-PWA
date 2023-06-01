@@ -1,17 +1,18 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 
-export default function CheckBox() {
-  const [done, setDone] = useState(false);
+interface CheckBoxProps {
+  isDone: boolean;
+}
+
+export default function CheckBox({ isDone }: CheckBoxProps) {
   return (
     <motion.button
-      onClick={() => setDone(!done)}
-      animate={{ backgroundColor: done ? "blue" : "white" }}
+      animate={{ backgroundColor: isDone ? "blue" : "white" }}
       transition={{ duration: 0.1 }}
-      className="flex items-center justify-center w-8 h-8 transition-all rounded-md "
+      className="flex items-center justify-center w-6 h-6 transition-all rounded-md "
     >
       <svg
-        className="w-8 h-8 text-white"
+        className="w-5 h-5 text-white"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -19,7 +20,7 @@ export default function CheckBox() {
       >
         <motion.path
           initial={{ pathLength: 0 }}
-          animate={{ pathLength: done ? 1 : 0 }}
+          animate={{ pathLength: isDone ? 1 : 0 }}
           transition={{ duration: 0.1, delay: 0.1 }}
           strokeLinecap="round"
           strokeLinejoin="round"
