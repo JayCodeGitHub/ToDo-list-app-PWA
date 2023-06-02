@@ -11,12 +11,21 @@ interface TaskProps {
 export default function Task({ title }: TaskProps) {
   const [isDone, setIsDone] = useState<boolean>(false);
   const { removeTask } = useTasks();
+
+  function handleDragEnd(info: any) {
+    const offset = info.offset.x;
+
+    if (offset < -50 || offset > 50) {
+      removeTask(title);
+    }
+  }
   return (
     <motion.span
       className="relative flex items-center justify-between w-48 h-8 pl-4 my-3 overflow-hidden cursor-grab"
       layout
       drag="x"
-      onDragEnd={() => removeTask(title)}
+      dragConstraints={{ left: 0, right: 0 }}
+      onDragEnd={handleDragEnd}
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.8 }}
