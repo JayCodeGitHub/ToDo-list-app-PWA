@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 export default function NavBar() {
   const router = useRouter();
   return (
-    <nav className="flex items-center justify-between w-full py-6 text-gray-900 transition-all px-28 dark:text-white bg-slate-100 dark:bg-gray-900">
+    <nav className="flex items-center justify-between w-full px-2 py-6 text-gray-900 transition-all md:px-28 dark:text-white bg-slate-100 dark:bg-gray-900">
       <ul className="flex gap-4 text-lg">
         {NavigationItems.map(({ name, href }) => (
           <li key={name}>
