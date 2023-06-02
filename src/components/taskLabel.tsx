@@ -13,7 +13,7 @@ export default function TaskLabel({ children, isDone }: TaskProps) {
           isDone
             ? "text-gray-600 dark:text-gray-400"
             : "text-gray-900 dark:text-white "
-        } relative ml-3 cursor-grab`}
+        } relative ml-3 cursor-grab transition-all`}
       >
         {children}
         <motion.span
