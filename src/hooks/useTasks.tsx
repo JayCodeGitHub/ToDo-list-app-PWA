@@ -7,6 +7,7 @@ interface TasksProviderProps {
 interface TasksContextProps {
   tasks: Array<string>;
   addTask: (task: string) => void;
+  removeTask: (task: string) => void;
 }
 
 const TasksContext = React.createContext({} as TasksContextProps);
@@ -18,8 +19,12 @@ export const TasksProvider = ({ children }: TasksProviderProps) => {
     setTasks((tasks) => [task, ...tasks]);
   };
 
+  const removeTask = (task: string) => {
+    setTasks((tasks) => tasks.filter((e) => e != task));
+  };
+
   return (
-    <TasksContext.Provider value={{ tasks, addTask }}>
+    <TasksContext.Provider value={{ tasks, addTask, removeTask }}>
       {children}
     </TasksContext.Provider>
   );
