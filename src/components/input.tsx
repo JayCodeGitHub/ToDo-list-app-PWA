@@ -13,6 +13,7 @@ export default function Input() {
     <form onSubmit={handleSubmit}>
       <input
         onChange={(e) => setTerm(e.target.value)}
+        required
         value={term}
         className="rounded-md p-0.5 border-2 border-gray-900"
       />
