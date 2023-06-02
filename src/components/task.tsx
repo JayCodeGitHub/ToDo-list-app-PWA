@@ -18,7 +18,6 @@ export default function Task({ title }: TaskProps) {
 
     if (offset < -50 || offset > 50 || velocity < -50) {
       removeTask(title);
-    } else {
     }
   }
   return (
