@@ -12,11 +12,13 @@ export default function Task({ title }: TaskProps) {
   const [isDone, setIsDone] = useState<boolean>(false);
   const { removeTask } = useTasks();
 
-  function handleDragEnd(info: any) {
+  function handleDragEnd(event: any, info: any) {
     const offset = info.offset.x;
+    const velocity = info.velocity.x;
 
-    if (offset < -50 || offset > 50) {
+    if (offset < -50 || offset > 50 || velocity < -50) {
       removeTask(title);
+    } else {
     }
   }
   return (
