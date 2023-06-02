@@ -7,12 +7,14 @@ export default function Home() {
   const { tasks } = useTasks();
 
   return (
-    <main className="absolute w-screen h-screen transition-all bg-slate-100 dark:bg-gray-900">
+    <main className="absolute flex flex-col items-center justify-start w-screen h-screen gap-5 py-12 transition-all bg-slate-100 dark:bg-gray-900">
       <DarkModeToggle>Dark Mode</DarkModeToggle>
       <Input />
-      {tasks.map((item) => (
-        <Task title={item} key={item} />
-      ))}
+      <span className="flex flex-col items-start w-48 mt-5">
+        {tasks.map((item) => (
+          <Task title={item} key={item} />
+        ))}
+      </span>
     </main>
   );
 }
