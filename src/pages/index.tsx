@@ -8,11 +8,11 @@ export default function Home() {
 
   return (
     <main className="absolute w-screen h-screen transition-all bg-slate-100 dark:bg-gray-900">
+      <DarkModeToggle>Dark Mode</DarkModeToggle>
       <Input />
       {tasks.map((item) => (
         <Task title={item} key={item} />
       ))}
-      <DarkModeToggle>Dark Mode</DarkModeToggle>
     </main>
   );
 }
