@@ -14,7 +14,7 @@ export default function Input() {
       <input
         onChange={(e) => setTerm(e.target.value)}
         value={term}
-        className="rounded-md p-0.5"
+        className="rounded-md p-0.5 border-2 border-gray-900"
       />
     </form>
   );
