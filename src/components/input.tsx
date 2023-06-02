@@ -10,12 +10,12 @@ export default function Input() {
     setTerm("");
   };
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="w-full px-14 md:w-auto">
       <input
         onChange={(e) => setTerm(e.target.value)}
         required
         value={term}
-        className="rounded-md p-0.5 border-2 border-gray-900"
+        className="rounded-md p-0.5 border-2 border-gray-900 w-full md:w-60"
       />
     </form>
   );
