@@ -15,8 +15,7 @@ export default function Task({ title }: TaskProps) {
     <motion.span
       className="flex items-center justify-between h-8 pl-4 my-4 w-min"
       layout
-      drag
-      dragDirectionLock
+      drag="x"
       onDragEnd={() => removeTask(title)}
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
