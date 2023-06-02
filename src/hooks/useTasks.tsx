@@ -20,7 +20,7 @@ export const TasksProvider = ({ children }: TasksProviderProps) => {
   };
 
   const removeTask = (task: string) => {
-    setTasks((tasks) => tasks.filter((e) => e != task));
+    setTasks((tasks) => tasks.filter((taskElement) => taskElement != task));
   };
 
   return (
