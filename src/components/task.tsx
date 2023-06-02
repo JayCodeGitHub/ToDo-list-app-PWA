@@ -14,7 +14,8 @@ export default function Task({ title }: TaskProps) {
   return (
     <motion.span
       className="flex items-center justify-between w-full h-8 pl-4 my-4"
-      onClick={() => removeTask(title)}
+      drag="x"
+      onDragEnd={() => removeTask(title)}
     >
       <motion.span className="flex items-center">
         <span onClick={() => setIsDone(!isDone)}>
