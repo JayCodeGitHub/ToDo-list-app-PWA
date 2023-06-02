@@ -13,7 +13,7 @@ export default function Task({ title }: TaskProps) {
   const { removeTask } = useTasks();
   return (
     <motion.span
-      className="relative flex items-center justify-between w-48 h-8 pl-4 my-3 overflow-hidden"
+      className="relative flex items-center justify-between w-48 h-8 pl-4 my-3 overflow-hidden cursor-grab"
       layout
       drag="x"
       onDragEnd={() => removeTask(title)}
