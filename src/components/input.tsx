@@ -11,7 +11,11 @@ export default function Input() {
   };
   return (
     <form onSubmit={handleSubmit}>
-      <input onChange={(e) => setTerm(e.target.value)} value={term} />
+      <input
+        onChange={(e) => setTerm(e.target.value)}
+        value={term}
+        className="rounded-md p-0.5"
+      />
     </form>
   );
 }
