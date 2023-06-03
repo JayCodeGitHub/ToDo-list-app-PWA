@@ -5,12 +5,11 @@ import { motion } from "framer-motion";
 import { useTasks } from "@/hooks/useTasks";
 
 interface TaskProps {
-  task: { title: string; status: string };
+  task: { title: string; done: boolean };
 }
 
 export default function Task({ task }: TaskProps) {
-  const [isDone, setIsDone] = useState<boolean>(false);
-  const { removeTask } = useTasks();
+  const { removeTask, setStatus } = useTasks();
 
   function handleDragEnd(event: any, info: any) {
     const offset = info.offset.x;
@@ -33,10 +32,10 @@ export default function Task({ task }: TaskProps) {
       transition={{ opacity: { duration: 0.2 } }}
     >
       <motion.span className="flex items-center">
-        <span onClick={() => setIsDone(!isDone)}>
-          <CheckBox isDone={isDone} />
+        <span onClick={() => setStatus(task.title)}>
+          <CheckBox isDone={task.done} />
         </span>
-        <TaskLabel isDone={isDone}>{task.title}</TaskLabel>
+        <TaskLabel isDone={task.done}>{task.title}</TaskLabel>
       </motion.span>
     </motion.span>
   );
