@@ -62,15 +62,33 @@ export default function NavBar() {
         }`}
       >
         <div className="flex flex-col items-center gap-24">
-          <div className="w-40 h-40 bg-[#3b82f6] rounded-full " />
+          <div className="w-40 h-40 bg-[#3b82f6] rounded-full flex justify-center items-center">
+            <svg
+              className="w-2/5 h-2/5"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#ffffff"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polyline points="9 11 12 14 22 4"></polyline>
+              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+            </svg>
+          </div>
           <ul className="flex flex-col w-40 gap-10 text-lg text-white">
             {NavigationItems.map(({ name, href }) => (
               <li key={name} className="w-40">
                 <Link
                   onClick={() => setIsHamburger(false)}
                   href={href}
-                  className={`flex items-center justify-center w-40 py-2 text-gray-900 transition-all rounded-lg dark:text-white
-                    ${router.pathname == href ? "bg-[#3b82f6]" : ""}
+                  className={`flex items-center justify-center w-40 py-2 transition-all rounded-lg dark:text-white
+                    ${
+                      router.pathname == href
+                        ? "bg-[#3b82f6] text-white"
+                        : "text-gray-900"
+                    }
                   `}
                 >
                   {name}
