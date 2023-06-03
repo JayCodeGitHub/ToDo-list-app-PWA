@@ -19,7 +19,9 @@ export default function Input() {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (validate(term) === null) {
+    if (term.length < 1) {
+      setError("Type a task");
+    } else if (validate(term) === null) {
       addTask(term);
       setError(false);
     }
@@ -30,7 +32,6 @@ export default function Input() {
       {error ? <p className="text-red-500 transition-all">{error}</p> : null}
       <input
         onChange={(e) => setTerm(e.target.value)}
-        required
         value={term}
         className="rounded-md p-0.5 border-2 border-gray-900 w-full md:w-60"
       />
