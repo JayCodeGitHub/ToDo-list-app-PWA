@@ -50,7 +50,14 @@ export default function NavBar() {
       </span>
       <div
         onClick={() => setIsHamburger(false)}
-        className={`fixed top-0 right-0 z-10 w-4/6 h-screen  dark:bg-gray-900 bg-slate-100 transition-all flex flex-col justify-between items-center py-16 ${
+        className={`fixed top-0 left-0 w-full h-full z-20 transition-all ${
+          isHamburger
+            ? " bg-background-visible visible"
+            : " bg-background-invisible invisible "
+        }`}
+      />
+      <div
+        className={`fixed top-0 right-0 z-30 w-4/6 h-screen  dark:bg-gray-900 bg-slate-100 transition-all flex flex-col justify-between items-center py-16 ${
           isHamburger ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -60,6 +67,7 @@ export default function NavBar() {
             {NavigationItems.map(({ name, href }) => (
               <li key={name} className="w-40">
                 <Link
+                  onClick={() => setIsHamburger(false)}
                   href={href}
                   className={`flex items-center justify-center w-40 py-2 text-gray-900 transition-all rounded-lg dark:text-white
                     ${router.pathname == href ? "bg-[#3b82f6]" : ""}
@@ -71,7 +79,6 @@ export default function NavBar() {
             ))}
           </ul>
         </div>
-
         <span>
           <DarkModeToggle>Dark Mode</DarkModeToggle>
         </span>
