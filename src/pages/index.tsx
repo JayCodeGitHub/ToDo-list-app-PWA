@@ -11,7 +11,7 @@ export default function Home() {
         <Input />
         <section className="flex flex-col items-start w-full mt-5 md:w-60 px-14 md:px-0">
           {tasks.map((item) => (
-            <Task title={item} key={item} />
+            <Task task={item} key={item.title} />
           ))}
         </section>
       </main>

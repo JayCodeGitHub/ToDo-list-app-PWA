@@ -9,7 +9,7 @@ export default function Input() {
   const validate = (task: string) => {
     let valid = true;
     tasks.map(function (item) {
-      if (item === task) {
+      if (item.title === task) {
         setError("The task already exists");
         valid = false;
       }

@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 import { useTasks } from "@/hooks/useTasks";
 
 interface TaskProps {
-  title: string;
+  task: { title: string; status: string };
 }
 
-export default function Task({ title }: TaskProps) {
+export default function Task({ task }: TaskProps) {
   const [isDone, setIsDone] = useState<boolean>(false);
   const { removeTask } = useTasks();
 
@@ -17,7 +17,7 @@ export default function Task({ title }: TaskProps) {
     const velocity = info.velocity.x;
 
     if (offset < -50 || offset > 50 || velocity < -50) {
-      removeTask(title);
+      removeTask(task.title);
     }
   }
   return (
@@ -36,7 +36,7 @@ export default function Task({ title }: TaskProps) {
         <span onClick={() => setIsDone(!isDone)}>
           <CheckBox isDone={isDone} />
         </span>
-        <TaskLabel isDone={isDone}>{title}</TaskLabel>
+        <TaskLabel isDone={isDone}>{task.title}</TaskLabel>
       </motion.span>
     </motion.span>
   );
