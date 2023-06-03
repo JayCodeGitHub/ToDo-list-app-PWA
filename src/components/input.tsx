@@ -2,15 +2,32 @@ import { FormEvent, useState } from "react";
 import { useTasks } from "@/hooks/useTasks";
 
 export default function Input() {
-  const { addTask } = useTasks();
+  const { tasks, addTask } = useTasks();
   const [term, setTerm] = useState("");
+  const [error, setError] = useState<boolean | string>(false);
+
+  const validate = (task: string) => {
+    let valid = true;
+    tasks.map(function (item) {
+      if (item === task) {
+        setError("The task already exists");
+        valid = false;
+      }
+    });
+    if (valid) return null;
+  };
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    addTask(term);
+    if (validate(term) === null) {
+      addTask(term);
+      setError(false);
+    }
     setTerm("");
   };
   return (
     <form onSubmit={handleSubmit} className="w-full px-14 md:w-auto">
+      {error ? <p className="text-red-500 transition-all">{error}</p> : null}
       <input
         onChange={(e) => setTerm(e.target.value)}
         required
