@@ -42,26 +42,40 @@ export default function NavBar() {
 
       <span
         className="flex flex-col justify-between w-6 h-5 md:hidden"
-        onClick={() => setIsHamburger(!isHamburger)}
+        onClick={() => setIsHamburger(true)}
       >
         <span className="w-full h-0.5 dark:bg-white bg-gray-900 rounded-sm" />
         <span className="w-full h-0.5 dark:bg-white bg-gray-900 rounded-sm" />
         <span className="w-full h-0.5 dark:bg-white bg-gray-900 rounded-sm" />
       </span>
-      <span
+      <div
         onClick={() => setIsHamburger(false)}
-        className={`fixed top-0 right-0 z-10 w-4/6 h-screen translate-x-full bg-slate-900 transition-all ${
+        className={`fixed top-0 right-0 z-10 w-4/6 h-screen  dark:bg-gray-900 bg-slate-100 transition-all flex flex-col justify-between items-center py-16 ${
           isHamburger ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <ul className="text-white">
-          {NavigationItems.map(({ name, href }) => (
-            <li key={name}>
-              <Link href={href}>{name}</Link>
-            </li>
-          ))}
-        </ul>
-      </span>
+        <div className="flex flex-col items-center gap-24">
+          <div className="w-40 h-40 bg-[#3b82f6] rounded-full " />
+          <ul className="flex flex-col w-40 gap-10 text-lg text-white">
+            {NavigationItems.map(({ name, href }) => (
+              <li key={name} className="w-40">
+                <Link
+                  href={href}
+                  className={`flex items-center justify-center w-40 py-2 text-gray-900 transition-all rounded-lg dark:text-white
+                    ${router.pathname == href ? "bg-[#3b82f6]" : ""}
+                  `}
+                >
+                  {name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <span>
+          <DarkModeToggle>Dark Mode</DarkModeToggle>
+        </span>
+      </div>
     </nav>
   );
 }
