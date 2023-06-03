@@ -15,11 +15,7 @@ export default function NavBar() {
           <li key={name}>
             <Link
               href={href}
-              className={
-                router.pathname == href
-                  ? " px-5 py-2.5 rounded-full transition-all cursor-pointer hover:text-gray-400 relative"
-                  : " px-5 py-2.5 rounded-full transition-all cursor-pointer hover:text-gray-400 relative"
-              }
+              className="px-5 py-2.5 rounded-full transition-all cursor-pointer hover:text-gray-400 relative"
             >
               {router.pathname == href && (
                 <motion.span
@@ -29,7 +25,13 @@ export default function NavBar() {
                   transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                 />
               )}
-              <span className="relative z-20 text-gray-900 dark:text-white">
+              <span
+                className={`relative z-20 ${
+                  router.pathname == href
+                    ? "text-white dark:text-white"
+                    : "text-gray-900 dark:text-white"
+                }`}
+              >
                 {name}
               </span>
             </Link>
