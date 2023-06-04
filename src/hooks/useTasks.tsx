@@ -57,7 +57,7 @@ export const TasksProvider = ({ children }: TasksProviderProps) => {
       return item;
     });
     setTasks(updatedTasks);
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   };
 
   return (
