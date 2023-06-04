@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 
 interface TasksProviderProps {
   children: React.ReactNode;
@@ -18,13 +18,31 @@ export const TasksProvider = ({ children }: TasksProviderProps) => {
     []
   );
 
-  const addTask = (task: string) => {
+  useEffect(() => {
+    if (!localStorage.getItem("tasks")) {
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+    } else {
+      setTasks(JSON.parse(localStorage.getItem("tasks") || ""));
+    }
+  }, []);
+
+  const addTask = async (task: string) => {
     setTasks((tasks) => [{ title: task, done: false }, ...tasks]);
+
+    localStorage.setItem(
+      "tasks",
+      JSON.stringify([{ title: task, done: false }, ...tasks])
+    );
   };
 
   const removeTask = (task: string) => {
     setTasks((tasks) =>
       tasks.filter((taskElement) => taskElement.title != task)
+    );
+
+    localStorage.setItem(
+      "tasks",
+      JSON.stringify(tasks.filter((taskElement) => taskElement.title != task))
     );
   };
 
@@ -40,6 +58,7 @@ export const TasksProvider = ({ children }: TasksProviderProps) => {
       return item;
     });
     setTasks(updatedTasks);
+    localStorage.setItem("tasks", JSON.stringify(tasks));
   };
 
   return (
