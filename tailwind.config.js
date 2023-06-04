@@ -16,7 +16,7 @@ module.exports = {
       colors: {
         'background-visible': 'rgba(0, 0, 0, 0.5)',
         'background-invisible': 'rgba(0, 0, 0, 0)',
-      },
+      }
     },
   },
   plugins: [],

@@ -9,7 +9,10 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>ToDo App</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no"
+        />
         <meta name="theme-color" content="#3b82f6" />
         <link rel="manifest" href="/site.webmanifest" />
         <link
