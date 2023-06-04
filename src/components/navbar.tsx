@@ -59,7 +59,7 @@ export default function NavBar() {
         }`}
       />
       <div
-        className={`fixed top-0 right-0 z-30 w-4/6 h-screen  dark:bg-gray-900 bg-slate-100 transition-all flex flex-col justify-between items-center py-16 ${
+        className={`fixed top-0 right-0 z-30 w-4/6 h-screen  dark:bg-gray-900 bg-slate-100 transition-all flex flex-col justify-between items-center pt-16 pb-32 ${
           isHamburger ? "translate-x-0" : "translate-x-full"
         }`}
       >
