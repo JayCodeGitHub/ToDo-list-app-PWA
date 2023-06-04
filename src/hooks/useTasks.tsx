@@ -39,7 +39,6 @@ export const TasksProvider = ({ children }: TasksProviderProps) => {
     setTasks((tasks) =>
       tasks.filter((taskElement) => taskElement.title != task)
     );
-
     localStorage.setItem(
       "tasks",
       JSON.stringify(tasks.filter((taskElement) => taskElement.title != task))
