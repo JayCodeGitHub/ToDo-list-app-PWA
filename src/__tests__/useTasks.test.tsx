@@ -6,20 +6,17 @@ interface WrapperProps {
   children: React.ReactNode;
 }
 
+const wrapper = ({ children }: WrapperProps) => (
+  <TasksProvider>{children}</TasksProvider>
+);
+
 test("Inital value of tasks is []", () => {
-  const wrapper = ({ children }: WrapperProps) => (
-    <TasksProvider>{children}</TasksProvider>
-  );
   const { result } = renderHook(() => useTasks(), { wrapper });
   const { tasks } = result.current;
   expect(tasks).toEqual([]);
 });
 
 test("AddTask adds an item to the list tasks", () => {
-  const wrapper = ({ children }: WrapperProps) => (
-    <TasksProvider>{children}</TasksProvider>
-  );
-
   const { result } = renderHook(() => useTasks(), { wrapper });
   act(() => {
     result.current.addTask("New Task");
@@ -29,10 +26,6 @@ test("AddTask adds an item to the list tasks", () => {
 });
 
 test("RemoveTask removes an item from the list tasks", () => {
-  const wrapper = ({ children }: WrapperProps) => (
-    <TasksProvider>{children}</TasksProvider>
-  );
-
   const { result } = renderHook(() => useTasks(), { wrapper });
   act(() => {
     result.current.addTask("New Task");
@@ -43,10 +36,6 @@ test("RemoveTask removes an item from the list tasks", () => {
 });
 
 test("setStatus change staus of task", () => {
-  const wrapper = ({ children }: WrapperProps) => (
-    <TasksProvider>{children}</TasksProvider>
-  );
-
   const { result } = renderHook(() => useTasks(), { wrapper });
   act(() => {
     result.current.addTask("New Task");
