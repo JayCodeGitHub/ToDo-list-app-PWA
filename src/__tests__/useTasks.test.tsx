@@ -14,3 +14,16 @@ test("Inital value of tasks is []", () => {
   const { tasks } = result.current;
   expect(tasks).toEqual([]);
 });
+
+test("AddTask adds an item to the list tasks", () => {
+  const wrapper = ({ children }: WrapperProps) => (
+    <TasksProvider>{children}</TasksProvider>
+  );
+
+  const { result } = renderHook(() => useTasks(), { wrapper });
+  act(() => {
+    result.current.addTask("New Task");
+  });
+  const { tasks } = result.current;
+  expect(tasks[0]).toEqual({ done: false, title: "New Task" });
+});
