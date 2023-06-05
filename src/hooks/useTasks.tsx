@@ -56,7 +56,14 @@ export const TasksProvider = ({ children }: TasksProviderProps) => {
       }
       return item;
     });
-    setTasks(updatedTasks);
+    setTasks((prevTasks) => {
+      return prevTasks.map((item) => {
+        if (item.title === title) {
+          return { ...item, done: !item.done };
+        }
+        return item;
+      });
+    });
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   };
 
