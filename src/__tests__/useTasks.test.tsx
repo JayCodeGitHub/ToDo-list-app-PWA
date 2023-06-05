@@ -41,3 +41,18 @@ test("RemoveTask removes an item from the list tasks", () => {
   const { tasks } = result.current;
   expect(tasks).toEqual([]);
 });
+
+test("setStatus change staus of task", () => {
+  const wrapper = ({ children }: WrapperProps) => (
+    <TasksProvider>{children}</TasksProvider>
+  );
+
+  const { result } = renderHook(() => useTasks(), { wrapper });
+  act(() => {
+    result.current.addTask("New Task");
+    result.current.addTask("New Task2");
+    result.current.setStatus("New Task");
+  });
+  const { tasks } = result.current;
+  expect(tasks[1]).toEqual({ done: true, title: "New Task" });
+});
