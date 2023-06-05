@@ -27,3 +27,17 @@ test("AddTask adds an item to the list tasks", () => {
   const { tasks } = result.current;
   expect(tasks[0]).toEqual({ done: false, title: "New Task" });
 });
+
+test("RemoveTask removes an item from the list tasks", () => {
+  const wrapper = ({ children }: WrapperProps) => (
+    <TasksProvider>{children}</TasksProvider>
+  );
+
+  const { result } = renderHook(() => useTasks(), { wrapper });
+  act(() => {
+    result.current.addTask("New Task");
+    result.current.removeTask("New Task");
+  });
+  const { tasks } = result.current;
+  expect(tasks).toEqual([]);
+});
